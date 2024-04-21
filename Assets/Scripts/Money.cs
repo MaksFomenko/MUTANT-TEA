@@ -8,6 +8,10 @@ public class Money : MonoBehaviour
 {
     private TextMeshProUGUI textMoney;
     public int money;
+    [SerializeField] private Quota _quota;
+    [SerializeField] private GameObject quotaObject;
+
+
     private void Start()
     {
         money = 10;
@@ -18,5 +22,12 @@ public class Money : MonoBehaviour
     public void RestartMoney()
     {
         textMoney.text = money.ToString() + " душ";
+        
+        if(_quota.quota == money)
+        {
+            quotaObject.SetActive(true); 
+        }
+
+
     }
 }

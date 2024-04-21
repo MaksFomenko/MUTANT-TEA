@@ -7,7 +7,7 @@ using TMPro;
 public class Quota : MonoBehaviour
 {
     private TextMeshProUGUI textQuota;
-    [SerializeField] private int quota;
+    public int quota;
     public void ChangeQuota()
     {
         textQuota.text = quota.ToString() + " душ";
