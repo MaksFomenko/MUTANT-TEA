@@ -26,6 +26,7 @@ public class ChangePeople : MonoBehaviour
     [SerializeField] private Animator cameraAnim;
     [SerializeField] private GameObject hells;
     int i = 0;
+    private int temp = 0;
 
     public void FindPeople()
     {
@@ -57,8 +58,10 @@ public class ChangePeople : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
                     i = 0;
+                    if (currentID == 0)                        temp = 1;
+                    if (currentID == 1)                        temp = 0;
 
-                    if (vHistory.streng[currentID] > vHistory.streng.Except(new int[] { vHistory.streng[currentID] }).Max())
+                    if (vHistory.streng[currentID] >= vHistory.streng[temp])
                     {
                         hitObject.transform.position = centerPos;
                         FindPeople();
@@ -144,22 +147,22 @@ public class ChangePeople : MonoBehaviour
         StartCoroutine(EndCard());
         int randCard = UnityEngine.Random.Range(0, 3);
         textCard.gameObject.SetActive(true);
-        if(randCard == 0) // повезло
+        if(randCard == 0) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         {
             _money.money += 1;
-            textCard.text = "ТИ ВИГPАВ!" +
-                "+1 душ";
+            textCard.text = "пїЅпїЅ пїЅпїЅпїЅPпїЅпїЅ!" +
+                "+1 пїЅпїЅпїЅ";
         }
-        if (randCard == 1) // середнє
+        if (randCard == 1) // пїЅпїЅпїЅпїЅпїЅпїЅ
         {
-            textCard.text = "ПPОHEСЛО" +
-                "+0 душ";
+            textCard.text = "пїЅPпїЅHEпїЅпїЅпїЅ" +
+                "+0 пїЅпїЅпїЅ";
         }
-        if (randCard == 2) // погано
+        if (randCard == 2) // пїЅпїЅпїЅпїЅпїЅпїЅ
         {
             _money.money -= 1;
-            textCard.text = "ТИ ПPОГPАВ!" +
-                "-1 душ";
+            textCard.text = "пїЅпїЅ пїЅPпїЅпїЅPпїЅпїЅ!" +
+                "-1 пїЅпїЅпїЅ";
         }
         _money.RestartMoney();
         buttonDeathCard.SetActive(false);
